@@ -1,0 +1,45 @@
+{
+  "memory": 1024,
+  "ttl": 60,
+  "timeout": 2000,
+  "minReplicas": 2,
+  "maxReplicas": 20,
+  "workers": 1,
+  "events": {
+    "onAppsLinked": {
+      "sender": "apps",
+      "keys": ["linked"]
+    },
+    "onAppInstalled": {
+      "sender": "apps",
+      "keys": ["setup"],
+      "settingsType": "workspace"
+    },
+    "onSettingsChanged": {
+      "sender": "apps",
+      "keys": ["settings"]
+    }
+  },
+  "routes": {
+    "persistSetupRequest": {
+      "path": "/_v/private/punch-out/persist-setup-request",
+      "public": true
+    },
+    "handleSetupRequest": {
+      "path": "/_v/private/punch-out/handle-setup-request",
+      "public": true
+    },
+    "handleTransferCartRequest": {
+      "path": "/_v/private/punch-out/handle-transfer-cart-request",
+      "public": true
+    },
+    "setPunchoutSession": {
+      "path": "/_v/punchout/session/transform",
+      "public": true
+    },
+    "keepAlive": {
+      "path": "/_v/punch-out/keep-alive",
+      "public": true
+    }
+  }
+}

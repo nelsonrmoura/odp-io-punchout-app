@@ -1,0 +1,74 @@
+{
+  "session": {
+    "header": {
+      "sender": {
+        "sharedSecret": "",
+        "username": "user1@gmail.com"
+      },
+      "punchOutType": "UserLevel",
+      "sessionData": "",
+      "marketsiteUser": "",
+      "url": "",
+      "buyerCookie": ""
+    },
+    "messageType": "cxml",
+    "operation": "create",
+    "body": {
+      "data": {
+        "uomType": "un",
+        "origIdentity": "",
+        "catalogCode": ""
+      },
+      "shipping": {
+        "address": {
+          "street": "3445 Seminole Trail #218",
+          "complement": "",
+          "city": "Charlottesville",
+          "state": "VA",
+          "postalCode": "22911",
+          "country": "USA"
+        },
+        "id": "",
+        "name": "",
+        "contact": {
+          "name": "",
+          "email": "",
+          "phone": ""
+        }
+      },
+      "billing": {
+        "id": ""
+      },
+      "items": [
+        {
+          "refId": "AAAA",
+          "quantity": 2,
+          "bundleId": 1,
+          "configId": "1",
+          "comments": ""
+        }
+      ],
+      "selectedItem": {
+        "refId": "AAAA"
+      }
+    },
+    "custom": {
+      "security": {
+        "views": [
+          {
+            "name": "ACCOUNT_CENTER_SIDEBAR",
+            "value": true
+          },
+          {
+            "name": "CART",
+            "value": false
+          },
+          {
+            "name": "CDAP SetuserLevel",
+            "value": "session: 0008014 - signature: eRVJF"
+          }
+        ]
+      }
+    }
+  }
+}

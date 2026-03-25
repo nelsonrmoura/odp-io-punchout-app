@@ -1,0 +1,11 @@
+{
+  "punchout": {
+    "input": {
+      "authentication": ["storeUserEmail"],
+      "checkout": ["orderFormId"]
+    },
+    "output": {
+      "punchout": ["marketsiteUser", "operation", "punchOutType", "punchOutFlags"]
+    }
+  }
+}

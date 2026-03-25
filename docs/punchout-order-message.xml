@@ -1,0 +1,69 @@
+<!DOCTYPE cXML SYSTEM "http://xml.cxml.org/schemas/cXML/1.2.014/cXML.dtd">
+<cXML payloadID="958074737352&www.workchairs.com" timestamp="2004-06-14T12:59:09-07:00">
+	<Header>
+		<From>
+			<Credential domain="DUNS">
+				<Identity>12345678</Identity>
+			</Credential>
+		</From>
+		<To>
+			<Credential domain="NetworkID">
+				<Identity>AN01000002792</Identity>
+			</Credential>
+		</To>
+		<Sender>
+			<Credential domain="www.workchairs.com">
+				<Identity>PunchoutResponse</Identity>
+			</Credential>
+			<UserAgent>Our PunchOut Site V4.2</UserAgent>
+		</Sender>
+	</Header>
+	<Message>
+		<PunchOutOrderMessage>
+			<BuyerCookie>1J3YVWU9QWMTB</BuyerCookie>
+			<PunchOutOrderMessageHeader operationAllowed="edit">
+				<Total>
+					<Money currency="USD">14.27</Money>
+				</Total>
+			</PunchOutOrderMessageHeader>
+			<ItemIn quantity="2">
+				<ItemID>
+					<SupplierPartID>3171 04 20</SupplierPartID>
+					<SupplierPartAuxiliaryID>ContractId=1751
+					    ItemId=417714 </SupplierPartAuxiliaryID>
+				</ItemID>
+				<ItemDetail>
+					<UnitPrice>
+						<Money currency="USD">1.22</Money>
+					</UnitPrice>
+					<Description xml:lang="en">ADAPTER; TUBE; 5/32";
+					    MALE; #10-32 UNF; FITTING
+					</Description>
+					<UnitOfMeasure>EA</UnitOfMeasure>
+					<Classification domain="UNSPSC">21101510</Classification>
+					<ManufacturerName>Dogwood</ManufacturerName>
+				</ItemDetail>
+			</ItemIn>
+			<ItemIn quantity="1">
+				<ItemID>
+					<SupplierPartID>3801 04 20</SupplierPartID>
+						<SupplierPartAuxiliaryID> ContractId=1751
+						    ItemId=417769 </SupplierPartAuxiliaryID>
+				</ItemID>
+				<ItemDetail>
+					<UnitPrice>
+						<Money currency="USD">11.83</Money>
+					</UnitPrice>
+					<Description xml:lang="en">ADAPTER; TUBE; 5/32"; 2 PER PACK;
+							MALE #10-32 UNF; STAINLESS STEEL; FITTING<
+					</Description>
+					<UnitOfMeasure>EA</UnitOfMeasure>
+					<Classification domain="UNSPSC">21101510</Classification>
+					<ManufacturerName>Legris</ManufacturerName>
+					<LeadTime>2</LeadTime>
+				</ItemDetail>
+				<SupplierID domain="DUNS">022878979</SupplierID>
+			</ItemIn>
+		</PunchOutOrderMessage>
+	</Message>
+</cXML>

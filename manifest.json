@@ -1,0 +1,277 @@
+{
+  "name": "punch-out",
+  "vendor": "odp",
+  "version": "0.0.17-beta",
+  "title": "OfficeDepot PunchOut",
+  "description": "OfficeDepot Punch out app",
+  "mustUpdateAt": "2026-02-25",
+  "categories": [],
+  "dependencies": {
+    "vtex.search-graphql": "0.x",
+    "vtex.graphql-server": "1.x",
+    "vtex.session-client": "1.x"
+  },
+  "builders": {
+    "node": "7.x",
+    "docs": "0.x",
+    "masterdata": "1.x",
+    "vtex.session": "0.x"
+  },
+  "scripts": {
+    "prereleasy": "bash lint.sh",
+    "postreleasy": "vtex publish --verbose"
+  },
+  "credentialType": "absolute",
+  "policies": [
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/{{account}}/dataentities/*"
+      }
+    },
+    {
+      "name": "POWER_USER_DS"
+    },
+    {
+      "name": "ADMIN_DS"
+    },
+    {
+      "name": "colossus-fire-event"
+    },
+    {
+      "name": "colossus-write-logs"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/checkout/pub/orderForm/*"
+      }
+    },
+    {
+      "name": "AcessaTodosCarrinhos"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/checkout/pub/orders/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/catalog/pvt/product/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/vtexid/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/sessions/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "*",
+        "path": "/api/authenticator/*"
+      }
+    },
+    {
+      "name": "vtex.search-graphql:resolve-graphql"
+    },
+    {
+      "name": "graphql-query"
+    },
+    {
+      "name": "vtex.graphql-server:resolve-graphql"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "b2btest.odpbusiness.com",
+        "path": "/api/v1/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "b2b.odpbusiness.com",
+        "path": "/api/v1/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.myvtex.com",
+        "path": "/api/organization-units/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.myvtex.com",
+        "path": "/api/vtexid/organization-units/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{workspace}}--{{account}}.myvtex.com",
+        "path": "/_v/skuReference/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "odp-procurement-app-production.up.railway.app",
+        "path": "/api/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/dataentities/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/license-manager/*"
+      }
+    },
+    {
+      "name": "Save_User"
+    },
+    {
+      "name": "View_Organization_Unit"
+    },
+    {
+      "name": "Edit_Organization_Unit"
+    }
+  ],
+  "settingsSchema": {
+    "title": "OfficeDepot PunchOut",
+    "type": "object",
+    "properties": {
+      "enablePunchOut": {
+        "title": "Enable Punch out",
+        "description": "Enable Punch out",
+        "type": "boolean"
+      },
+      "allowedApiKeys": {
+        "title": "Allowed API keys for Punch out",
+        "description": "Allowed API keys for Punch out",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "punchOutIdKey": {
+        "title": "VTEX App Key for Punch out user authentication",
+        "description": "VTEX App Key for Punch out user authentication",
+        "type": "string"
+      },
+      "punchOutIdToken": {
+        "title": "VTEX App Token for Punch out user authentication",
+        "description": "VTEX App Token for Punch out user authentication",
+        "type": "string",
+        "format": "password"
+      },
+      "punchOutWebMethodsUserId": {
+        "title": "Web Methods User ID",
+        "description": "Web Methods User ID",
+        "type": "string"
+      },
+      "punchOutWebMethodsPassword": {
+        "title": "Web Methods Password",
+        "description": "Web Methods Password",
+        "type": "string",
+        "format": "password"
+      },
+      "skuTranslateApiUrl": {
+        "title": "SKU Translation API URL",
+        "description": "URL of the ODP SKU cross-reference API. Used to translate between ODP reference IDs and VTEX SKU IDs. Example: https://odp-procurement-app-production.up.railway.app/api/sku-translate",
+        "type": "string"
+      },
+      "debugVerboseMode": {
+        "title": "VTEX IO Debug Verbose Mode",
+        "description": "When enabled, sends detailed step-by-step logs to the debug webhook URL. Never sends keys or sensitive credentials.",
+        "type": "boolean"
+      },
+      "debugWebhookUrl": {
+        "title": "Debug Webhook URL",
+        "description": "URL to receive debug log events (e.g., Railway procurement app SSE endpoint). Only used when Debug Verbose Mode is enabled.",
+        "type": "string"
+      },
+      "debugWebhookSecret": {
+        "title": "Debug Webhook Secret",
+        "description": "Shared secret sent as X-Webhook-Secret header to authenticate webhook calls. Must match WEBHOOK_SECRET on the receiving server.",
+        "type": "string",
+        "format": "password"
+      },
+      "logSettings": {
+        "title": "Logging Settings",
+        "description": "Configuration for application logging",
+        "type": "object",
+        "properties": {
+          "loggingType": {
+            "title": "Type",
+            "description": "Select the logging type for the application. Test/Development will log in MasterData while Production will log into logging system",
+            "type": "string",
+            "enum": [
+              "Disabled",
+              "Test/Development",
+              "Production"
+            ],
+            "default": "Test/Development"
+          },
+          "logError": {
+            "title": "Log Error",
+            "description": "Enable or disable error logging",
+            "type": "boolean",
+            "default": true
+          },
+          "logWarn": {
+            "title": "Log Warning",
+            "description": "Enable or disable warning logging",
+            "type": "boolean",
+            "default": true
+          },
+          "logInfo": {
+            "title": "Log Info",
+            "description": "Enable or disable info logging",
+            "type": "boolean",
+            "default": true
+          },
+          "logDebug": {
+            "title": "Log Debug",
+            "description": "Enable or disable debug logging",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
+}

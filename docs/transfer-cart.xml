@@ -1,0 +1,229 @@
+<ShoppingCartMessage timeStamp="2025-03-03 01:54:46:152 AM EST">
+  <Header msgType="cXML" msgCode="3">
+    <Username>90451766|#|76756894@TARGET.COM</Username>
+    <Password></Password>
+    <MarketPlace></MarketPlace>
+    <VendorID></VendorID>
+    <BillToID>90451766</BillToID>
+    <InvLoc>1135</InvLoc>
+    <!-- URL to POST form to -->
+    <URL target="">
+      https://s1.ariba.com/Buyer/punchout?client=HTML.165D1ABCF3D5F4081929692F58ED87B5.Node4produs-c1-buyer-s2-z2-2us2gcpint&amp;responseid=2&amp;locale=en_US</URL>
+    <Cookie>25wGpLRdPs67c550fdad1247334</Cookie>
+    <UserAgent>mozilla/5.0 (x11; cros x86_64 14541.0.0) applewebkit/537.36 (khtml, like gecko)
+      chrome/130.0.0.0 safari/537.36</UserAgent>
+      <!-- Like a BLOB -->
+    <SessionData>
+      &lt;![CDATA[&lt;PunchoutData&gt;&lt;UOMType&gt;UN&lt;/UOMType&gt;&lt;OrigIdentity&gt;AN01000018306&lt;/OrigIdentity&gt;&lt;CatalogCode&gt;U&lt;/CatalogCode&gt;&lt;/PunchoutData&gt;]]&gt;</SessionData>
+    <MessageHeader>
+      <ShipTo>
+        <Addr id="0949" seq="01433">
+          <Name>TARGET CORPORATION</Name>
+          <PostalAddress>
+            <Address1>2610 BISHOP DR</Address1>
+            <Address2>SAN RAMON</Address2>
+            <City>SAN RAMON</City>
+            <State>CA</State>
+            <PostalCode>945832338</PostalCode>
+            <Country>USA</Country>
+          </PostalAddress>
+          <Contact id="1">
+            <Name>90451766|#|76756894@TARGET.COM</Name>
+            <Email></Email>
+            <PhoneNumber>
+              <Number>5555555</Number>
+            </PhoneNumber>
+            <FaxNumber>
+              <Number></Number>
+            </FaxNumber>
+          </Contact>
+        </Addr>
+      </ShipTo>
+      <BillTo>
+        <Addr id="90451766">
+          <Name>TARGET CORPORATION</Name>
+          <PostalAddress>
+            <Address1>1000 NICOLLET MALL</Address1>
+            <Address2>TPN-1049 G492</Address2>
+            <City>MINNEAPOLIS</City>
+            <State>MN</State>
+            <PostalCode>554032542</PostalCode>
+            <Country>USA</Country>
+          </PostalAddress>
+        </Addr>
+      </BillTo>
+      <Accounting>
+        <CostCenter></CostCenter>
+        <Desktop></Desktop>
+        <PONumber date="" />
+        <Release></Release>
+      </Accounting>
+    </MessageHeader>
+  </Header>
+  <Detail>
+    <Totals>
+      <Tax>13.97</Tax>
+      <Delivery>0.0</Delivery>
+      <Fees />
+      <Total>253.93</Total>
+    </Totals>
+    <Item quantity="5">
+      <Sku>6182331</Sku>
+      <CustSKU>6182331</CustSKU>
+      <UnitOfMeasure>CT</UnitOfMeasure>
+      <Description>Executive Suite&amp;reg; Coffee Single-Serve Coffee K-Cup&amp;reg; Pods, Variety
+        Pack, Carton Of 70</Description>
+      <CostCenter></CostCenter>
+      <Classification domain="UNSPSC">44120000</Classification>
+      <ManufacturerName>OFFICE DEPOT</ManufacturerName>
+      <ManufacturerPartID>5000357938</ManufacturerPartID>
+      <ConfigID></ConfigID>
+      <UnitPrice>18.88</UnitPrice>
+      <BOQty>0</BOQty>
+      <Comments></Comments>
+      <ContractItem>true</ContractItem>
+      <RestrictedItem>false</RestrictedItem>
+      <RecycledItem>false</RecycledItem>
+      <VWItem>false</VWItem>
+      <ContractIcon>false</ContractIcon>
+      <BestValueIcon>true</BestValueIcon>
+      <ListPrice>43.21</ListPrice>
+      <HazardousItem>false</HazardousItem>
+    </Item>
+    <Item quantity="1">
+      <Sku>705484</Sku>
+      <CustSKU>705484</CustSKU>
+      <UnitOfMeasure>BX</UnitOfMeasure>
+      <Description>Band-aid&amp;reg; Bandages, Adhesive, Assorted, Box Of 280 Bandages</Description>
+      <CostCenter></CostCenter>
+      <Classification domain="UNSPSC">4231100500</Classification>
+      <ManufacturerName>JOHNSON &amp;amp; JOHNSON CONSUMER INC</ManufacturerName>
+      <ManufacturerPartID>4711</ManufacturerPartID>
+      <ConfigID></ConfigID>
+      <UnitPrice>14.01</UnitPrice>
+      <BOQty>0</BOQty>
+      <Comments></Comments>
+      <ContractItem>true</ContractItem>
+      <RestrictedItem>false</RestrictedItem>
+      <RecycledItem>false</RecycledItem>
+      <VWItem>false</VWItem>
+      <ContractIcon>false</ContractIcon>
+      <BestValueIcon>true</BestValueIcon>
+      <ListPrice>25.06</ListPrice>
+      <HazardousItem>false</HazardousItem>
+    </Item>
+    <Item quantity="1">
+      <Sku>9139270</Sku>
+      <CustSKU>9139270</CustSKU>
+      <UnitOfMeasure>BX</UnitOfMeasure>
+      <Description>Curad Variety Pack 4-sided Seal Bandages - Assorted - Fabric, Plastic - 200 / Box</Description>
+      <CostCenter></CostCenter>
+      <Classification domain="UNSPSC">44120000</Classification>
+      <ManufacturerName></ManufacturerName>
+      <ManufacturerPartID>MIICUR0800RB</ManufacturerPartID>
+      <ConfigID></ConfigID>
+      <UnitPrice>11.39</UnitPrice>
+      <BOQty>0</BOQty>
+      <Comments></Comments>
+      <ContractItem>false</ContractItem>
+      <RestrictedItem>false</RestrictedItem>
+      <RecycledItem>false</RecycledItem>
+      <VWItem>false</VWItem>
+      <ContractIcon>false</ContractIcon>
+      <BestValueIcon>false</BestValueIcon>
+      <ListPrice>13.49</ListPrice>
+      <HazardousItem>false</HazardousItem>
+    </Item>
+    <Item quantity="1">
+      <Sku>429053</Sku>
+      <CustSKU>429053</CustSKU>
+      <UnitOfMeasure>CA</UnitOfMeasure>
+      <Description>Medline Standard Instant Cold Packs, 4 3/4&amp;quot; X 6 1/4&amp;quot;, Case Of
+        50</Description>
+      <CostCenter></CostCenter>
+      <Classification domain="UNSPSC">44120000</Classification>
+      <ManufacturerName>MEDLINE INDUSTRIES, INC.</ManufacturerName>
+      <ManufacturerPartID>MDS137020</ManufacturerPartID>
+      <ConfigID></ConfigID>
+      <UnitPrice>34.29</UnitPrice>
+      <BOQty>0</BOQty>
+      <Comments></Comments>
+      <ContractItem>false</ContractItem>
+      <RestrictedItem>false</RestrictedItem>
+      <RecycledItem>false</RecycledItem>
+      <VWItem>true</VWItem>
+      <ContractIcon>false</ContractIcon>
+      <BestValueIcon>false</BestValueIcon>
+      <ListPrice>39.59</ListPrice>
+      <HazardousItem>false</HazardousItem>
+    </Item>
+    <Item quantity="5">
+      <Sku>8674820</Sku>
+      <CustSKU>8674820</CustSKU>
+      <UnitOfMeasure>BX</UnitOfMeasure>
+      <Description>Ammex Professional Powder-Free Exam-Grade Nitrile Gloves, Medium, Black, Box Of
+        100 Gloves</Description>
+      <CostCenter></CostCenter>
+      <Classification domain="UNSPSC">44120000</Classification>
+      <ManufacturerName>AMMEX CORPORATION</ManufacturerName>
+      <ManufacturerPartID>ABNPF44100</ManufacturerPartID>
+      <ConfigID></ConfigID>
+      <UnitPrice>6.45</UnitPrice>
+      <BOQty>0</BOQty>
+      <Comments></Comments>
+      <ContractItem>true</ContractItem>
+      <RestrictedItem>false</RestrictedItem>
+      <RecycledItem>false</RecycledItem>
+      <VWItem>false</VWItem>
+      <ContractIcon>false</ContractIcon>
+      <BestValueIcon>true</BestValueIcon>
+      <ListPrice>27.99</ListPrice>
+      <HazardousItem>false</HazardousItem>
+    </Item>
+    <Item quantity="1">
+      <Sku>197473</Sku>
+      <CustSKU>197473</CustSKU>
+      <UnitOfMeasure>CA</UnitOfMeasure>
+      <Description>DIXIE&amp;reg; 8 1/2IN MEDIUM-WEIGHT PAPER PLATES BY GP PRO (GEORGIA-PACIFIC),
+        PATHWAYS&amp;reg;, 500 PLATES PER CASE</Description>
+      <CostCenter></CostCenter>
+      <Classification domain="UNSPSC">44120000</Classification>
+      <ManufacturerName>DIXIE FOODS</ManufacturerName>
+      <ManufacturerPartID>UX9WS</ManufacturerPartID>
+      <ConfigID></ConfigID>
+      <UnitPrice>54.04</UnitPrice>
+      <BOQty>0</BOQty>
+      <Comments></Comments>
+      <ContractItem>true</ContractItem>
+      <RestrictedItem>false</RestrictedItem>
+      <RecycledItem>false</RecycledItem>
+      <VWItem>false</VWItem>
+      <ContractIcon>false</ContractIcon>
+      <BestValueIcon>true</BestValueIcon>
+      <ListPrice>95.3</ListPrice>
+      <HazardousItem>false</HazardousItem>
+    </Item>
+    <Item quantity="1">
+      <Sku>249225</Sku>
+      <CustSKU>249225</CustSKU>
+      <UnitOfMeasure>EA</UnitOfMeasure>
+      <Description>Dixie&amp;reg; Ultra&amp;reg; Heavyweight Paper Bowls, 12 Oz, Case Of 125</Description>
+      <CostCenter></CostCenter>
+      <Classification domain="UNSPSC">44120000</Classification>
+      <ManufacturerName>DIXIE FOODS</ManufacturerName>
+      <ManufacturerPartID>SXB12WSEA</ManufacturerPartID>
+      <ConfigID></ConfigID>
+      <UnitPrice>13.55</UnitPrice>
+      <BOQty>0</BOQty>
+      <Comments></Comments>
+      <ContractItem>true</ContractItem>
+      <RestrictedItem>false</RestrictedItem>
+      <RecycledItem>false</RecycledItem>
+      <VWItem>false</VWItem>
+      <ContractIcon>false</ContractIcon>
+      <BestValueIcon>true</BestValueIcon>
+      <ListPrice>26.3</ListPrice>
+      <HazardousItem>false</HazardousItem>
+    </Item>
+  </Detail>
+</ShoppingCartMessage>

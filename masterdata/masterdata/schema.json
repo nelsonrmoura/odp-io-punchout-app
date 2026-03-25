@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "setupId": {
+      "type": "string",
+      "title": "Session Id"
+    },
+    "sessionDetails": {
+      "type": "object",
+      "title": "Session Details"
+    }
+  },
+  "required": ["setupId", "sessionDetails"],
+  "v-indexed": ["id", "setupId", "sessionDetails"]
+}

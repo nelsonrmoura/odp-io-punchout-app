@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ODOrderInfo timeStamp="2025-03-17 10:26:52:201 AM EDT"
+  documentid="1447306ffffff867761aa.879058957@app457.snv.ariba.com">
+  <Header msgType="cXML" msgCode="3">
+    <Username>08995313|#|john.doe@acme.com</Username>
+    <Password></Password>
+    <URL>https://b2bwmtest/invoke/test/postback?interface=cxml</URL>
+    <Cookie>DB6FK0JWSY3F</Cookie>
+    <Session>
+      https://b2bcomtest.odpbusiness.com/billboard/billboard.do;jsessionid=0000UZMLK3yY8v1zJc2U-Zpgggz:17nqijur1</Session>
+  </Header>
+</ODOrderInfo>
