@@ -260,7 +260,7 @@ export async function convertOrderFormToWebMethods(
   )
 
   const punchbackUrl = setupRequest.content.session.header.url
-  const isMockMode = !punchbackUrl.includes('odpbusiness.com')
+  const isMockMode = setupRequest.content.session.mockWebmethods === true
 
   let responseForm: string
 

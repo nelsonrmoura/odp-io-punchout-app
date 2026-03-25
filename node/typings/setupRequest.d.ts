@@ -37,6 +37,7 @@ interface SetupSession {
   operation: string
   body: SetupBody
   custom: SetupCustom
+  mockWebmethods?: boolean
 }
 
 interface SetupCustom {

@@ -1,7 +1,7 @@
 {
   "name": "punch-out",
   "vendor": "odp",
-  "version": "0.0.20-beta",
+  "version": "0.0.21-beta",
   "title": "OfficeDepot PunchOut",
   "description": "OfficeDepot Punch out app",
   "mustUpdateAt": "2026-02-25",
