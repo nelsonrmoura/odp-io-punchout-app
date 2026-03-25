@@ -217,7 +217,7 @@ export const parseProfileAndRedirect = async ({
   }
 
   if (operation === 'inspect') {
-    redirectUrl = '/punch-out/cart'
+    redirectUrl = '/checkout/cart'
   }
 
   const odpProfileUserName = getUsernameFromSetupRequest(content)
