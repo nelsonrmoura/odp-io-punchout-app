@@ -135,7 +135,7 @@ export const addItemsToCart = async ({
         // At this point, only the items with ID are present.
         id: item.crossRefItem?.skuId ?? '',
         quantity: item.quantity,
-        seller: '1', // TODO: Need to clarify this.
+        seller: 'odpseller',
         attachments: [
           {
             name: WEB_METHODS_ATTACHMENT_NAME,
