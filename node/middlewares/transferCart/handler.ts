@@ -296,7 +296,7 @@ export async function convertOrderFormToWebMethods(
 
     const mockHtml = `<html>\n<body onload="document.forms[0].submit()">\n<form method="POST" action="${punchbackUrl}">\n<input type="hidden" name="cxml-base64" value="${cartDataBase64}" />\n</form>\n</body>\n</html>`
 
-    responseForm = Buffer.from(mockHtml).toString('base64')
+    responseForm = mockHtml
   } else {
     const tokenResponse = await webMethods.getToken(settings)
 
