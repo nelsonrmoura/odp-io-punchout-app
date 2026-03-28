@@ -656,6 +656,101 @@ export async function cartHandler(
   }
 }
 
+/**
+ * For edit/inspect flows: patch the VTEX session with checkout.orderFormId
+ * so the session transform fires immediately (before the user reaches the storefront).
+ * This makes punchout.operation, punchOutFlags, etc. available on any page.
+ *
+ * Only runs for edit/inspect — create flows don't need it because the user
+ * lands on homepage/PDP where session data isn't consumed yet.
+ */
+export async function patchSessionWithOrderForm(
+  ctx: Context,
+  next: () => Promise<void>
+) {
+  const {
+    clients: { extendedSession: sessionClient },
+    state: { operation, orderFormId },
+  } = ctx
+
+  const sessionId =
+    ctx.state.setupRequest?.content?.session?.header?.buyerCookie ?? 'unknown'
+
+  if (!['edit', 'inspect'].includes(operation)) {
+    await next()
+
+    return
+  }
+
+  if (!orderFormId) {
+    sendDebugEvent(
+      ctx,
+      {
+        step: 'patchSessionWithOrderForm',
+        status: 'success',
+        message: 'Skipped — no orderFormId available',
+        timestamp: new Date().toISOString(),
+      },
+      sessionId
+    )
+    await next()
+
+    return
+  }
+
+  try {
+    // Read the vtex_session cookie that was set during patchSession (earlier in the chain)
+    const sessionCookie = ctx.state.sessionToken
+      ? `vtex_session=${ctx.state.sessionToken}`
+      : ''
+
+    const response = await sessionClient.patchSessionWithOrderFormId(
+      orderFormId,
+      sessionCookie
+    )
+
+    // Forward any updated session cookies from the response
+    await forwardSessionCookies(response.headers, ctx, [
+      'vtex_session',
+      'vtex_segment',
+    ])
+
+    sendDebugEvent(
+      ctx,
+      {
+        step: 'patchSessionWithOrderForm',
+        status: 'success',
+        message: `Session patched with orderFormId — transform should fire for ${operation} mode`,
+        timestamp: new Date().toISOString(),
+        details: {
+          data: {
+            orderFormId,
+            operation,
+          },
+        },
+      },
+      sessionId
+    )
+  } catch (error) {
+    // Non-blocking — the session transform can still fire later when checkout loads
+    const errMsg = error instanceof Error ? error.message : String(error)
+
+    sendDebugEvent(
+      ctx,
+      {
+        step: 'patchSessionWithOrderForm',
+        status: 'error',
+        message: `Failed to patch session with orderFormId: ${errMsg}`,
+        timestamp: new Date().toISOString(),
+        details: { data: { orderFormId, operation, error: errMsg } },
+      },
+      sessionId
+    )
+  }
+
+  await next()
+}
+
 export async function invalidateSession(
   ctx: Context,
   next: () => Promise<void>
@@ -769,7 +864,23 @@ export async function invalidateSession(
     // On master: relative redirect stays on the same domain (stage.mytestdomain2.com)
     // On dev workspace: absolute redirect to FastStore domain (different from workspace URL)
     const isMasterWorkspace = ctx.vtex.workspace === 'master'
-    const relativePath = redirectUrl ?? '/'
+    const operation = ctx.state.operation
+
+    // Build the relative path based on operation.
+    // Always append ?orderFormId so FastStore can override stale IndexedDB carts.
+    let relativePath: string
+
+    if (operation === 'inspect') {
+      relativePath = `/checkout/inspect?orderFormId=${ctx.state.orderFormId}`
+    } else if (operation === 'edit') {
+      relativePath = `/checkout/cart?orderFormId=${ctx.state.orderFormId}`
+    } else {
+      // Create: homepage, PDP, landing, or custom URL — append orderFormId
+      const basePath = redirectUrl ?? '/'
+      const separator = basePath.includes('?') ? '&' : '?'
+
+      relativePath = `${basePath}${separator}orderFormId=${ctx.state.orderFormId}`
+    }
 
     let finalRedirectUrl: string
 
@@ -782,14 +893,68 @@ export async function invalidateSession(
       finalRedirectUrl = `https://stage.mytestdomain2.com${relativePath}`
     }
 
-    ctx.redirect(finalRedirectUrl)
+    // Serve an HTML page that syncs the orderFormId into FastStore's IndexedDB
+    // (keyval-store → keyval → fs::cart) before redirecting.
+    // Handles 3 cases:
+    //   1. Database doesn't exist → onupgradeneeded creates keyval store → write fs::cart
+    //   2. Database exists with keyval store → write fs::cart directly
+    //   3. Database exists but broken (no keyval store) → delete, recreate, write fs::cart
+    ctx.status = 200
+    ctx.set('Content-Type', 'text/html')
+    ctx.body = `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Redirecting...</title></head>
+<body>
+<p>Loading your session...</p>
+<script>
+(function() {
+  var targetUrl = ${JSON.stringify(finalRedirectUrl)};
+  var cartData = {id: ${JSON.stringify(ctx.state.orderFormId)}, items: [], messages: [], shouldSplitItems: true};
+
+  function go() { window.location.href = targetUrl; }
+
+  function writeCart(db) {
+    try {
+      var tx = db.transaction('keyval', 'readwrite');
+      tx.objectStore('keyval').put(cartData, 'fs::cart');
+      tx.oncomplete = function() { db.close(); go(); };
+      tx.onerror = function() { db.close(); go(); };
+    } catch(e) { try { db.close(); } catch(x) {} go(); }
+  }
+
+  function openAndWrite() {
+    var req = indexedDB.open('keyval-store');
+    req.onupgradeneeded = function(e) {
+      var db = e.target.result;
+      if (!db.objectStoreNames.contains('keyval')) {
+        db.createObjectStore('keyval');
+      }
+    };
+    req.onsuccess = function(e) {
+      var db = e.target.result;
+      if (db.objectStoreNames.contains('keyval')) {
+        writeCart(db);
+      } else {
+        db.close();
+        var del = indexedDB.deleteDatabase('keyval-store');
+        del.onsuccess = function() { openAndWrite(); };
+        del.onerror = go;
+        del.onblocked = go;
+      }
+    };
+    req.onerror = go;
+  }
+
+  try { openAndWrite(); } catch(e) { go(); }
+})();
+</script>
+</body></html>`
 
     sendDebugEvent(
       ctx,
       {
         step: 'invalidateSession',
         status: 'success',
-        message: 'Session invalidated — redirect issued',
+        message: 'Session invalidated — HTML redirect with IndexedDB clear',
         timestamp: new Date().toISOString(),
         details: {
           data: {

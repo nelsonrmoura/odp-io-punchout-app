@@ -22,6 +22,7 @@ import {
   cartHandler,
   invalidateSession,
   patchSession,
+  patchSessionWithOrderForm,
   retrieveSetupHandler,
   skuReferenceDecoder,
 } from './middlewares/setupRequest/handler'
@@ -123,6 +124,7 @@ export default new Service({
         retrieveSetupHandler,
         skuReferenceDecoder,
         cartHandler,
+        patchSessionWithOrderForm,
         invalidateSession,
       ],
     }),

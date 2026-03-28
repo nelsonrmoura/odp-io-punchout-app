@@ -33,4 +33,34 @@ export class SessionClient extends ExternalClient {
       }
     )
   }
+
+  /**
+   * Patch the session with checkout.orderFormId to trigger the punchout session transform.
+   * This writes the orderFormId into the VTEX session so the session framework
+   * calls /_v/punchout/session/transform with the correct inputs.
+   */
+  public patchSessionWithOrderFormId = (
+    orderFormId: string,
+    sessionCookie: string
+  ) => {
+    return this.http.postRaw(
+      routes.base,
+      {
+        public: {
+          checkout: {
+            orderFormId: { value: orderFormId },
+          },
+        },
+      },
+      {
+        headers: {
+          Cookie: [
+            `VtexIdclientAutCookie_${this.context.account}=${this.context.storeUserAuthToken}`,
+            sessionCookie,
+          ].join('; '),
+        },
+        metric: 'session-patch-orderform',
+      }
+    )
+  }
 }
